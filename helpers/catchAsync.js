@@ -4,6 +4,7 @@ module.exports = (func) => {
   };
 };
 
+//? Other way of doing it
 // function catchAsync(fn) {
 //   return function (req, res, next) {
 //     fn(req, res, next).catch((e) => next(e));

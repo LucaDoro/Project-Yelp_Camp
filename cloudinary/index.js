@@ -19,3 +19,5 @@ const storage = new CloudinaryStorage({
 });
 
 module.exports = { cloudinary, storage };
+
+//TODO deleting images from front and back end, Course (563 and 564)

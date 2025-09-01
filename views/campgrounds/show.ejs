@@ -23,6 +23,7 @@
         </button>
         <% } %>
       </div>
+
       <div class="card-body">
         <h5 class="card-title"><%= campground.title %></h5>
         <p class="card-text"><%= campground.description %></p>
@@ -49,6 +50,8 @@
   </div>
 
   <div class="col-6">
+    <div id="map" style="width: 600px; height: 300px"></div>
+
     <% if(currentUser) { %>
     <h2>Leave a Review</h2>
     <form class="mb-5 validated-form" action="/campgrounds/<%= campground._id %>/reviews" method="POST" novalidate>
@@ -106,3 +109,10 @@
     <%}%>
   </div>
 </div>
+
+<script>
+  const maptilerApiKey = "<%- process.env.MAPTILER_API_KEY %>";
+  const campground = <%- JSON.stringify(campground) %>
+</script>
+
+<script src="/js/showPageMap.js"></script>

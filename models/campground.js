@@ -7,6 +7,11 @@ const ImageSchema = new Schema({
   filename: String,
 });
 
+//? A virtual is a property that is not stored in MongoDB.
+//? Virtuals are typically used for computed properties on documents
+//? Getting access to .url with image.thumbnail in edit.ejs when deleting an image.
+//? Virtual assigns a keyword (thumbnail) to the returned value which is then accessed with image.thumbnail (see edit.ejs)
+
 ImageSchema.virtual("thumbnail").get(function () {
   return this.url.replace("/upload", "/upload/w_200");
 });
@@ -14,6 +19,17 @@ ImageSchema.virtual("thumbnail").get(function () {
 const CampgroundSchema = new Schema({
   title: String,
   images: [ImageSchema],
+  geometry: {
+    type: {
+      type: String,
+      enum: ["Point"],
+      required: true,
+    },
+    coordinates: {
+      type: [Number],
+      required: true,
+    },
+  },
   price: Number,
   description: String,
   location: String,
