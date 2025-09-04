@@ -1,5 +1,5 @@
 <!-- change to sticky-top for accurate replication of course, else not enough margin in boilerplate.ejs -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="/campgrounds">YelpCamp</a>
     <button
@@ -19,6 +19,10 @@
         <a class="nav-link" href="/campgrounds">Campgrounds</a>
         <a class="nav-link" href="/campgrounds/new">New Campground</a>
       </div>
+      <!-- <form class="d-flex ms-auto" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search for Campgrounds" aria-label="Search" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
       <div class="navbar-nav ms-auto">
         <% if(!currentUser) { %>
         <a class="nav-link" href="/login">Login</a>

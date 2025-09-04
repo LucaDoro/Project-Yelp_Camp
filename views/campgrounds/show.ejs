@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/stylesheets/stars.css" />
 
 <div class="row">
-  <div class="col-6">
+  <div class="col-12 col-lg-6">
     <div class="card mb-3">
       <div id="campgroundCarousel" class="carousel slide">
         <div class="carousel-inner">
@@ -36,10 +36,18 @@
 
       <% if(currentUser && campground.author._id.equals(currentUser._id)) { %>
       <div class="card-body">
-        <a class="card-link btn btn-info text-white" href="/campgrounds/<%= campground._id  %>/edit">Edit</a>
-        <form class="d-inline" action="/campgrounds/<%= campground._id  %>?_method=DELETE" method="POST">
-          <button class="btn btn-danger">Delete campground</button>
-        </form>
+        <div class="d-flex justify-content-between">
+          <a class="card-link btn btn-info text-white" href="/campgrounds/<%= campground._id  %>/edit"
+            >Edit Campground</a
+          >
+          <form
+            class="d-inline justify-content-between"
+            action="/campgrounds/<%= campground._id  %>?_method=DELETE"
+            method="POST"
+          >
+            <button class="btn btn-danger">Delete campground</button>
+          </form>
+        </div>
       </div>
       <% } %>
       <div class="card-footer text-muted">
@@ -49,8 +57,8 @@
     </div>
   </div>
 
-  <div class="col-6">
-    <div id="map" style="width: 600px; height: 300px"></div>
+  <div class="col-12 col-lg-6">
+    <div id="map"></div>
 
     <% if(currentUser) { %>
     <h2>Leave a Review</h2>

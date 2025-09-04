@@ -1,9 +1,9 @@
 maptilersdk.config.apiKey = maptilerApiKey;
 
 const map = new maptilersdk.Map({
-  container: "map-cluster",
+  container: "cluster-map",
   style: maptilersdk.MapStyle.BRIGHT,
-  center: [-103.59179687498357, 40.66995747013945],
+  center: [-101.59179687498357, 39.66995747013945],
   zoom: 3,
 });
 
@@ -72,6 +72,7 @@ map.on("load", function () {
   // the location of the feature, with
   // description HTML from its properties.
   map.on("click", "unclustered-point", function (e) {
+    console.log(e.features[0]);
     const { popUpMarkup } = e.features[0].properties;
     const coordinates = e.features[0].geometry.coordinates.slice();
 

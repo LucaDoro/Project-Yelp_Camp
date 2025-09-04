@@ -10,15 +10,16 @@
       integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
       crossorigin="anonymous"
     />
-    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v3.5.0/maptiler-sdk.umd.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/app.css" />
     <link href="https://cdn.maptiler.com/maptiler-sdk-js/v3.5.0/maptiler-sdk.css" rel="stylesheet" />
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v3.5.0/maptiler-sdk.umd.min.js"></script>
   </head>
 
-  <body class="d-flex flex-column vh-100">
+  <body class="d-flex flex-column vh-100 bg-light">
     <%- include('../partials/navbar') %>
     <main style="margin-top: 6rem" class="container"><%- include('../partials/flash') %> <%- body %></main>
-    <%- include('../partials/footer') %>
 
+    <%- include('../partials/footer') %>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
