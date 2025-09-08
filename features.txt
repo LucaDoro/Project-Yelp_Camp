@@ -1,0 +1,8 @@
+- Fix mobile nav UI in homepage
+- Test mobile UI
+- smaller edit and delete buttons in show page(mobile)
+- add go back button in show page
+- change default "no-image" image
+- Display floating image with dim background when clicking on campground image (index)
+- Add satelite button mode view for maps
+- 
