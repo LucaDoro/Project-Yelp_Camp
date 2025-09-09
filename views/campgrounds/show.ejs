@@ -37,15 +37,13 @@
       <% if(currentUser && campground.author._id.equals(currentUser._id)) { %>
       <div class="card-body">
         <div class="d-flex justify-content-between">
-          <a class="card-link btn btn-info text-white" href="/campgrounds/<%= campground._id  %>/edit"
-            >Edit Campground</a
-          >
+          <a class="card-link btn btn-info text-white" href="/campgrounds/<%= campground._id  %>/edit">Edit Camp</a>
           <form
             class="d-inline justify-content-between"
             action="/campgrounds/<%= campground._id  %>?_method=DELETE"
             method="POST"
           >
-            <button class="btn btn-danger">Delete campground</button>
+            <button class="btn btn-danger">Delete Camp</button>
           </form>
         </div>
       </div>
