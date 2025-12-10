@@ -13,14 +13,20 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.createCampground = async (req, res) => {
-  const geoData = await maptilerClient.geocoding.forward(req.body.campground.location, { limit: 1 });
+  const geoData = await maptilerClient.geocoding.forward(
+    req.body.campground.location,
+    { limit: 1 }
+  );
 
   //? Initialize a new campground with the data from the form
   const campground = new Campground(req.body.campground);
   campground.geometry = geoData.features[0].geometry;
 
   //? req.files is populated by multer middleware, which handles file uploads
-  campground.images = req.files.map((f) => ({ url: f.path, filename: f.filename }));
+  campground.images = req.files.map((f) => ({
+    url: f.path,
+    filename: f.filename,
+  }));
 
   //? Set the author of the campground to the currently logged-in user
   //? req.user is populated by passport middleware, which authenticates the user
@@ -61,8 +67,13 @@ module.exports.renderEditForm = async (req, res) => {
 module.exports.updateCampground = async (req, res) => {
   const { id } = req.params;
   console.log(req.body);
-  const campground = await Campground.findByIdAndUpdate(id, { ...req.body.campground });
-  const geoData = await maptilerClient.geocoding.forward(req.body.campground.location, { limit: 1 });
+  const campground = await Campground.findByIdAndUpdate(id, {
+    ...req.body.campground,
+  });
+  const geoData = await maptilerClient.geocoding.forward(
+    req.body.campground.location,
+    { limit: 1 }
+  );
   campground.geometry = geoData.features[0].geometry;
   const imgs = req.files.map((f) => ({ url: f.path, filename: f.filename }));
   campground.images.push(...imgs); // .push so no overwrite + spread so no array in an array
@@ -71,7 +82,9 @@ module.exports.updateCampground = async (req, res) => {
     for (let filename of req.body.deleteImages) {
       await cloudinary.uploader.destroy(filename);
     }
-    await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } });
+    await campground.updateOne({
+      $pull: { images: { filename: { $in: req.body.deleteImages } } },
+    });
   }
   req.flash("success", "Successfully updated campground");
   res.redirect(`/campgrounds/${campground._id}`);

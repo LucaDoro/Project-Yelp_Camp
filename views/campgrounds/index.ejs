@@ -3,7 +3,9 @@
 <div class="container">
   <div class="card mb-4">
     <div class="card-body p-3 d-inline">
-      <p class="d-inline lead fs-5"><%= campgrounds.length %> Campgrounds found</p>
+      <p class="d-inline lead fs-5">
+        <%= campgrounds.length %> Campgrounds found
+      </p>
     </div>
   </div>
   <% for (let campground of campgrounds) { %>
@@ -11,7 +13,12 @@
     <div class="row">
       <div class="col-lg-4 imgs-index">
         <% if(campground.images.length) { %>
-        <img class="img-fluid" crossorigin="anonymous" alt="" src="<%= campground.images[0].url %>" />
+        <img
+          class="img-fluid"
+          crossorigin="anonymous"
+          alt=""
+          src="<%= campground.images[0].url %>"
+        />
         <% } else { %>
         <img
           class="img-fluid"
@@ -24,11 +31,15 @@
         <div class="card-body">
           <h5 class="card-title"><%= campground.title %></h5>
           <p class="card-text"><%= campground.description %></p>
-          <p class="card-text"><b>Reviews: <%= campground.reviews.length %></b></p>
+          <p class="card-text">
+            <b>Reviews: <%= campground.reviews.length %></b>
+          </p>
           <p class="card-text">
             <small class="text-muted"><%= campground.location %></small>
           </p>
-          <a class="btn btn-primary" href="/campgrounds/<%= campground._id %>">View <%= campground.title %></a>
+          <a class="btn btn-primary" href="/campgrounds/<%= campground._id %>"
+            >View <%= campground.title %></a
+          >
         </div>
       </div>
     </div>

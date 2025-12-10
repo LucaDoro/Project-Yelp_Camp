@@ -24,7 +24,15 @@ map.on("load", function () {
     paint: {
       // Use step expressions (https://docs.maptiler.com/gl-style-specification/expressions/#step)
       // with three steps to implement three types of circles:
-      "circle-color": ["step", ["get", "point_count"], "#00BCD4", 10, "#2196F3", 30, "#3F51B5"],
+      "circle-color": [
+        "step",
+        ["get", "point_count"],
+        "#00BCD4",
+        10,
+        "#2196F3",
+        30,
+        "#3F51B5",
+      ],
       "circle-radius": ["step", ["get", "point_count"], 15, 10, 20, 30, 25],
     },
   });
@@ -60,7 +68,9 @@ map.on("load", function () {
       layers: ["clusters"],
     });
     const clusterId = features[0].properties.cluster_id;
-    const zoom = await map.getSource("campgrounds").getClusterExpansionZoom(clusterId);
+    const zoom = await map
+      .getSource("campgrounds")
+      .getClusterExpansionZoom(clusterId);
     map.easeTo({
       center: features[0].geometry.coordinates,
       zoom,
@@ -83,7 +93,10 @@ map.on("load", function () {
       coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
     }
 
-    new maptilersdk.Popup().setLngLat(coordinates).setHTML(popUpMarkup).addTo(map);
+    new maptilersdk.Popup()
+      .setLngLat(coordinates)
+      .setHTML(popUpMarkup)
+      .addTo(map);
   });
 
   map.on("mouseenter", "clusters", () => {
