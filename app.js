@@ -138,11 +138,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/fakeUser", async (req, res) => {
-  const user = new User({ email: "FakeUser@gmail.com", username: "FakeUser" });
-  const newUser = await User.register(user, "password");
-  res.send(newUser);
-});
+// app.get("/fakeUser", async (req, res) => {
+//   const user = new User({ email: "FakeUser@gmail.com", username: "FakeUser" });
+//   const newUser = await User.register(user, "password");
+//   res.send(newUser);
+// });
 
 app.use("/campgrounds", campgroundRoutes);
 app.use("/campgrounds/:id/reviews", reviewRoutes);

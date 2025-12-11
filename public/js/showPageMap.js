@@ -7,6 +7,15 @@ const map = new maptilersdk.Map({
   zoom: 14, // starting zoom
 });
 
+new maptilersdk.Marker()
+  .setLngLat(campground.geometry.coordinates)
+  .setPopup(
+    new maptilersdk.Popup({ offset: 25 }).setHTML(
+      `<h3>${campground.title}</h3><p>${campground.location}</p>`
+    )
+  )
+  .addTo(map);
+
 // const baseMaps = {
 //   STREETS: {
 //     img: "https://cloud.maptiler.com/static/img/maps/streets.png",
@@ -85,12 +94,3 @@ const map = new maptilersdk.Map({
 // }
 
 // map.addControl(new layerSwitcherControl({ basemaps: baseMaps, initialBasemap: initialStyle }), "bottom-left");
-
-new maptilersdk.Marker()
-  .setLngLat(campground.geometry.coordinates)
-  .setPopup(
-    new maptilersdk.Popup({ offset: 25 }).setHTML(
-      `<h3>${campground.title}</h3><p>${campground.location}</p>`
-    )
-  )
-  .addTo(map);
