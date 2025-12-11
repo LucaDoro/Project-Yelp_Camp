@@ -80,7 +80,7 @@ const scriptSrcUrls = [
   "https://kit.fontawesome.com/",
   "https://cdnjs.cloudflare.com/",
   "https://cdn.jsdelivr.net",
-  "https://cdn.maptiler.com/", // add this
+  "https://cdn.maptiler.com", // add this
 ];
 const styleSrcUrls = [
   "https://kit-free.fontawesome.com/",
@@ -88,10 +88,11 @@ const styleSrcUrls = [
   "https://fonts.googleapis.com/",
   "https://use.fontawesome.com/",
   "https://cdn.jsdelivr.net",
-  "https://cdn.maptiler.com/", // add this
+  "https://cdn.maptiler.com", // add this
 ];
 const connectSrcUrls = [
-  "https://api.maptiler.com/", // add this
+  "https://api.maptiler.com",
+  "https://cdn.jsdelivr.net", // add this
 ];
 
 const fontSrcUrls = [];
@@ -100,7 +101,7 @@ app.use(
     directives: {
       defaultSrc: [],
       connectSrc: ["'self'", ...connectSrcUrls],
-      scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+      scriptSrc: ["'self'", "'unsafe-inline'", ...scriptSrcUrls],
       styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
       workerSrc: ["'self'", "blob:"],
       objectSrc: [],
