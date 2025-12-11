@@ -75,45 +75,67 @@ app.use(session(sessionConfig));
 app.use(flash());
 app.use(helmet());
 
-const scriptSrcUrls = [
-  "https://stackpath.bootstrapcdn.com/",
-  "https://kit.fontawesome.com/",
-  "https://cdnjs.cloudflare.com/",
-  "https://cdn.jsdelivr.net",
-  "https://cdn.maptiler.com", // add this
-];
-const styleSrcUrls = [
-  "https://kit-free.fontawesome.com/",
-  "https://stackpath.bootstrapcdn.com/",
-  "https://fonts.googleapis.com/",
-  "https://use.fontawesome.com/",
-  "https://cdn.jsdelivr.net",
-  "https://cdn.maptiler.com", // add this
-];
-const connectSrcUrls = [
-  "https://api.maptiler.com",
-  "https://cdn.jsdelivr.net", // add this
-];
+// const scriptSrcUrls = [
+//   "https://stackpath.bootstrapcdn.com/",
+//   "https://kit.fontawesome.com/",
+//   "https://cdnjs.cloudflare.com/",
+//   "https://cdn.jsdelivr.net",
+//   "https://cdn.maptiler.com", // add this
+// ];
+// const styleSrcUrls = [
+//   "https://kit-free.fontawesome.com/",
+//   "https://stackpath.bootstrapcdn.com/",
+//   "https://fonts.googleapis.com/",
+//   "https://use.fontawesome.com/",
+//   "https://cdn.jsdelivr.net",
+//   "https://cdn.maptiler.com", // add this
+// ];
+// const connectSrcUrls = [
+//   "https://api.maptiler.com",
+//   "https://cdn.jsdelivr.net", // add this
+// ];
+//
+// const fontSrcUrls = [];
 
-const fontSrcUrls = [];
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: [],
-      connectSrc: ["'self'", ...connectSrcUrls],
-      scriptSrc: ["'self'", "'unsafe-inline'", ...scriptSrcUrls],
-      styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+      connectSrc: [
+        "'self'",
+        "https://api.maptiler.com",
+        "https://cdn.jsdelivr.net",
+      ],
+      scriptSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        "https://stackpath.bootstrapcdn.com",
+        "https://kit.fontawesome.com",
+        "https://cdnjs.cloudflare.com",
+        "https://cdn.jsdelivr.net",
+        "https://cdn.maptiler.com",
+      ],
+      styleSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        "https://kit-free.fontawesome.com",
+        "https://stackpath.bootstrapcdn.com",
+        "https://fonts.googleapis.com",
+        "https://use.fontawesome.com",
+        "https://cdn.jsdelivr.net",
+        "https://cdn.maptiler.com",
+      ],
       workerSrc: ["'self'", "blob:"],
       objectSrc: [],
       imgSrc: [
         "'self'",
         "blob:",
         "data:",
-        "https://res.cloudinary.com/dd3fooxfo/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
-        "https://images.unsplash.com/",
-        "https://api.maptiler.com/",
+        "https://res.cloudinary.com/dd3fooxfo", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
+        "https://images.unsplash.com",
+        "https://api.maptiler.com",
       ],
-      fontSrc: ["'self'", ...fontSrcUrls],
+      fontSrc: ["'self'"],
     },
   })
 );
