@@ -2,6 +2,11 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
+if (process.env.NODE_ENV === "production" && !process.env.DB_URL) {
+  throw new Error("DB_URL is missing in production");
+}
+console.log(process.env.MAPTILER_API_KEY);
+
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -185,6 +190,7 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   console.log(`Serving on port ${port}`);
 });
