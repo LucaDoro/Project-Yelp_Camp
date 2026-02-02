@@ -1,5 +1,6 @@
 const Campground = require("../models/campground");
 const maptilerClient = require("@maptiler/client");
+
 maptilerClient.config.apiKey = process.env.MAPTILER_API_KEY;
 const { cloudinary } = require("../cloudinary");
 
@@ -15,7 +16,7 @@ module.exports.renderNewForm = (req, res) => {
 module.exports.createCampground = async (req, res) => {
   const geoData = await maptilerClient.geocoding.forward(
     req.body.campground.location,
-    { limit: 1 }
+    { limit: 1 },
   );
 
   //? Initialize a new campground with the data from the form
@@ -72,7 +73,7 @@ module.exports.updateCampground = async (req, res) => {
   });
   const geoData = await maptilerClient.geocoding.forward(
     req.body.campground.location,
-    { limit: 1 }
+    { limit: 1 },
   );
   campground.geometry = geoData.features[0].geometry;
   const imgs = req.files.map((f) => ({ url: f.path, filename: f.filename }));
