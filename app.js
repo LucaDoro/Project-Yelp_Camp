@@ -5,7 +5,6 @@ if (process.env.NODE_ENV !== "production") {
 if (process.env.NODE_ENV === "production" && !process.env.DB_URL) {
   throw new Error("DB_URL is missing in production");
 }
-console.log(process.env.MAPTILER_API_KEY);
 
 const express = require("express");
 const path = require("path");
