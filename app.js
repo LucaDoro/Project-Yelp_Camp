@@ -137,7 +137,7 @@ app.use(
       ],
       fontSrc: ["'self'"],
     },
-  })
+  }),
 );
 
 app.use(passport.initialize());
